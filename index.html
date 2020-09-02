@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evently - Online Events</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .nav {
+        width: 100%;
+        height: 50px;
+        background-color: #373435;
+      }
+      .nav-title {
+        margin: 5px 0px 5px 10px;
+        padding: 0;
+        color: white;
+        float: left;
+        padding: 5px;
+        font-family: "Balsamiq Sans", cursive;
+      }
+      .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        float: right;
+      }
+      .nav ul li {
+        display: inline;
+        float: left;
+      }
+      .nav ul li a {
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        color: white;
+        font-weight: bold;
+        font-family: "Poppins", sans-serif;
+      }
+      .slider-header {
+        width: 100%;
+        height: 200px;
+        background: black;
+        overflow: hidden;
+      }
+      .slider ul {
+        display: flex;
+        list-style: none;
+        flex-direction: columns;
+        padding-left: 10px;
+      }
+
+      .slider ul li {
+        flex-grow: 4;
+        justify-content: space-between;
+      }
+      .slider ul li img {
+        padding: 0;
+        width: 95%;
+        border-radius: 10px;
+      }
+      .event-types-container {
+        width: 100%;
+      }
+      .section-title {
+        margin: 25px;
+      }
+      .section-title h3 {
+        padding: 0;
+        margin: 0;
+        color: black;
+      }
+      .section-title p {
+        padding: 5px 0px;
+        margin: 0px;
+        color: gray;
+      }
+      .event-types {
+        width: 95%;
+        height: auto;
+        margin: 10px 1.5%;
+      }
+      .event-card {
+        display: inline-block;
+        background: greenyellow;
+        height: 250px;
+        width: 30%;
+        border: black;
+        margin: 1.5%;
+        border-radius: 10px;
+      }
+      .event-card:nth-child(1) {
+        background: url("https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_220/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1590664121%2Fp4bsxgb3wohc9e8nsng6.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .event-card:nth-child(2) {
+        background: url("https://picsum.photos/200/300?random=1");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .event-card:nth-child(3) {
+        background: url("https://picsum.photos/200/300?random=3");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .event-card:nth-child(4) {
+        background: url("https://picsum.photos/200/300?random=4");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .event-card:nth-child(5) {
+        background: url("https://picsum.photos/200/300?random=5");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .event-card:nth-child(6) {
+        background: url("https://picsum.photos/200/300?random=6");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .workshop-cards {
+        overflow: auto;
+        height: 400px;
+        white-space: nowrap;
+        overflow: auto;
+      }
+      .workshop-cards::-webkit-scrollbar {
+        display: none;
+      }
+      .workshop-card {
+        display: inline-block;
+        background: white;
+        height: 350px;
+        width: 35%;
+        margin: 1.5%;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+      }
+      .workshop-card-head img {
+        width: 100%;
+        height: 200px;
+      }
+      .workshop-card-text {
+        margin: 20px;
+      }
+      .workshop-card-text h4 {
+        margin: 5px;
+      }
+      .workshop-card-text span {
+        display: block;
+        color: #676465;
+      }
+      .workshop-card-text span:nth-child(4) {
+        margin-top: 10px;
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .organizers-card {
+        width: 25%;
+        box-shadow: 4px 9px 29px -5px rgba(140, 123, 140, 1);
+      }
+      .organizers-card-head img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 20px 49px;
+      }
+      .organizers-card-text {
+        text-align: center;
+      }
+      .organizers-card-text span {
+        display: block;
+        color: #676465;
+      }
+      .follow-btn {
+        display: inline-block;
+        padding: 0.7em 1.4em;
+        /*margin: 0 0.3em 0.3em 0; */
+        margin-top: 10px;
+        border-radius: 0.15em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #3369ff;
+        background-color: transparent;
+        box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+        text-align: center;
+        position: relative;
+        border: 3px solid #3369ff;
+      }
+      .follow-btn:hover {
+        background-color: #5482ff;
+        box-shadow: none;
+        color: white;
+        transition-duration: 0.4s;
+      }
+      .follow-btn:active {
+        top: 0.1em;
+      }
+      .footer {
+        width: 100%;
+        height: 200px;
+        margin-top: 100px;
+        background-color: rgb(42, 42, 42);
+      }
+      .footer {
+        -webkit-font-smoothing: antialiased;
+        font-family: basis-grotesque-pro, sans-serif;
+        box-sizing: inherit;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background: #000000;
+        color: #ccc;
+        font-weight: normal;
+        margin-top: calc(36px * 1.4);
+        padding: calc(36px * 1.4) 0px;
+        font-size: calc(14px * 1.1);
+      }
+      .footer-content {
+        -webkit-font-smoothing: antialiased;
+        font-family: basis-grotesque-pro, sans-serif;
+        color: #ccc;
+        font-weight: normal;
+        font-size: calc(14px * 1.1);
+        box-sizing: inherit;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footer-bottom {
+        -webkit-font-smoothing: antialiased;
+        font-family: basis-grotesque-pro, sans-serif;
+        color: #ccc;
+        font-weight: normal;
+        font-size: calc(14px * 1.1);
+        box-sizing: inherit;
+        margin-top: calc(36px * 0.7);
+        clear: both;
+        overflow: auto;
+      }
+      .footer-nav {
+        -webkit-font-smoothing: antialiased;
+        color: #ccc;
+        font-weight: normal;
+        font-size: calc(14px * 1.1);
+        box-sizing: inherit;
+        font-family: inherit;
+        margin: 0;
+        display: inline-block !important;
+        list-style-type: none;
+        vertical-align: top;
+        width: 100%;
+        padding-left: 0;
+      }
+      .footer-links {
+        -webkit-font-smoothing: antialiased;
+        color: #ccc;
+        font-weight: normal;
+        font-size: calc(14px * 1.1);
+        list-style-type: none;
+        box-sizing: inherit;
+        font-family: inherit;
+        display: inline-block;
+        margin: 0 16px calc(12px / 2) 0;
+      }
+      .footer-links a {
+        -webkit-font-smoothing: antialiased;
+        font-weight: normal;
+        font-size: calc(14px * 1.1);
+        list-style-type: none;
+        font-family: inherit;
+        box-sizing: inherit;
+        background-color: transparent;
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h2 class="nav-title">Evently</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Organize</a></li>
+        <li><a href="#">Help</a></li>
+        <li>
+          <a href="#"
+            >Sign in <span><i class="fa fa-user-o"></i></span
+          ></a>
+        </li>
+      </ul>
+    </div>
+    <div class="slider-header">
+      <div class="slider">
+        <ul>
+          <li>
+            <img
+              src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_560/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1598624885%2Fmpk9m7cx0ijz3lrzcg7r.png"
+              alt=""
+            />
+          </li>
+          <li>
+            <img
+              src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_560/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1597427402%2Fxxdqoigq3hy5vwhhatoq.png"
+              alt=""
+            />
+          </li>
+          <li>
+            <img
+              src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_560/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1598952055%2Ff1qaid5njkn9d9ybtxqm.png"
+              alt=""
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="event-types-container">
+      <div class="section-title">
+        <h3>DISCOVER DIGITAL EVENTS</h3>
+        <p>Join a live online event - learn, interact and be entertained.</p>
+      </div>
+      <div class="event-types">
+        <div class="event-card"></div>
+        <div class="event-card"></div>
+        <div class="event-card"></div>
+        <div class="event-card"></div>
+        <div class="event-card"></div>
+        <div class="event-card"></div>
+      </div>
+    </div>
+    <div class="event-types-container">
+      <div class="section-title">
+        <h3>Workshops</h3>
+        <p>Book For Workshops</p>
+      </div>
+      <div class="event-types workshop-cards">
+        <div class="workshop-card">
+          <div class="workshop-card-head">
+            <img src="https://picsum.photos/200/300?random=1" alt="" />
+          </div>
+          <div class="workshop-card-text">
+            <h4>Elit cillum excepteur</h4>
+            <span class="time">Sept 7 | 7PM</span>
+            <span class="platform">Watch On YouTube</span>
+            <span class="ticket-price">$10</span>
+          </div>
+        </div>
+        <div class="workshop-card">
+          <div class="workshop-card-head">
+            <img src="https://picsum.photos/200/300?random=1" alt="" />
+          </div>
+          <div class="workshop-card-text">
+            <h4>Elit cillum excepteur</h4>
+            <span class="time">Sept 7 | 7PM</span>
+            <span class="platform">Watch On YouTube</span>
+            <span class="ticket-price">$10</span>
+          </div>
+        </div>
+        <div class="workshop-card">
+          <div class="workshop-card-head">
+            <img src="https://picsum.photos/200/300?random=1" alt="" />
+          </div>
+          <div class="workshop-card-text">
+            <h4>Elit cillum excepteur</h4>
+            <span class="time">Sept 7 | 7PM</span>
+            <span class="platform">Watch On YouTube</span>
+            <span class="ticket-price">$10</span>
+          </div>
+        </div>
+        <div class="workshop-card">
+          <div class="workshop-card-head">
+            <img src="https://picsum.photos/200/300?random=1" alt="" />
+          </div>
+          <div class="workshop-card-text">
+            <h4>Elit cillum excepteur</h4>
+            <span class="time">Sept 7 | 7PM</span>
+            <span class="platform">Watch On YouTube</span>
+            <span class="ticket-price">$10</span>
+          </div>
+        </div>
+        <div class="workshop-card">
+          <div class="workshop-card-head">
+            <img src="https://picsum.photos/200/300?random=1" alt="" />
+          </div>
+          <div class="workshop-card-text">
+            <h4>Elit cillum excepteur</h4>
+            <span class="time">Sept 7 | 7PM</span>
+            <span class="platform">Watch On YouTube</span>
+            <span class="ticket-price">$10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="event-types-container">
+      <div class="section-title">
+        <h3>Featured Organizers</h3>
+        <p>
+          Follow the organizers from these events and get notified when they
+          create new ones.
+        </p>
+      </div>
+      <div class="event-types workshop-cards">
+        <div class="workshop-card organizers-card">
+          <div class="workshop-card-head organizers-card-head">
+            <img
+              src="https://pbs.twimg.com/profile_images/1243465670454632449/Gm06laC1.jpg"
+              alt=""
+            />
+          </div>
+          <div class="organizers-card-text">
+            <h2>Dua Lipa</h2>
+            <span class="time">400 Followers</span>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+        <div class="workshop-card organizers-card">
+          <div class="workshop-card-head organizers-card-head">
+            <img
+              src="https://media.pitchfork.com/photos/5cae120798ed5e6aaeb251fd/1:1/w_2837,h_2837,c_limit/Avicii.jpg"
+              alt=""
+            />
+          </div>
+          <div class="organizers-card-text">
+            <h2>Avicii</h2>
+            <span class="time">400 Followers</span>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+        <div class="workshop-card organizers-card">
+          <div class="workshop-card-head organizers-card-head">
+            <img
+              src="https://pbs.twimg.com/profile_images/1290854807729709057/hqk2SDCd_400x400.jpg"
+              alt=""
+            />
+          </div>
+          <div class="organizers-card-text">
+            <h2>Cardi B.</h2>
+            <span class="time">400 Followers</span>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+        <div class="workshop-card organizers-card">
+          <div class="workshop-card-head organizers-card-head">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/I/51SaQben-TL._AC_SX466_.jpg"
+              alt=""
+            />
+          </div>
+          <div class="organizers-card-text">
+            <h2>Britney Spears</h2>
+            <span class="time">400 Followers</span>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+        <div class="workshop-card organizers-card">
+          <div class="workshop-card-head organizers-card-head">
+            <img
+              src="https://target.scene7.com/is/image/Target/GUEST_8714fa42-7c2c-41d7-80ae-43d6f04aa89f"
+              alt=""
+            />
+          </div>
+          <div class="organizers-card-text">
+            <h2>Taylor Swift</h2>
+            <span class="time">400 Followers</span>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-content">
+        <div>
+          <a href="/"
+            ><img
+              src="https://picsum.photos/320/80?random=2"
+              alt="Paytm Insider"
+          /></a>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-text">
+            Consectetur eu labore minim velit eiusmod do irure sunt tempor.
+            Incididunt irure in proident consectetur ex eiusmod velit elit
+            cillum. Enim pariatur duis eiusmod aliqua ullamco officia amet aute
+            dolore nisi anim cillum elit. Proident aliquip exercitation labore
+            minim veniam enim pariatur id dolore ullamco officia deserunt minim.
+            Exercitation proident culpa ex ipsum aliqua. Tempor ullamco
+            consectetur officia anim eiusmod. Quis non quis irure nisi esse amet
+            quis irure.
+          </p>
+          <ul class="footer-nav">
+            <li class="footer-links"><a href="#">About Us</a></li>
+            <li class="footer-links">
+              <a href="#">Organize</a>
+            </li>
+            <li class="footer-links">
+              <a href="#">Contact Us</a>
+            </li>
+          </ul>
+          <ul class="css-1glh79o-Object">
+            <li class="footer-links">
+              <a class="icon-fa icon-facebook" href="#"></a>
+            </li>
+            <li class="footer-links">
+              <a class="icon-fa icon-twitter" href="#"></a>
+            </li>
+            <li class="footer-links">
+              <a class="icon-fa icon-instagram" href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
